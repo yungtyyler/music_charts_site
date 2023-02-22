@@ -1,0 +1,18 @@
+{% extends 'charts/base.html' %}
+
+{% block title %}Charts{% endblock %}
+
+{% block content %}
+    <h1 class='text-center text-6xl'>Decades</h1>
+        {% for chart in charts %}
+            <div>
+                <a href = '{% url 'chart:detail' chart.id %}'>
+                    <div>
+                        <div class = 'p-6 bg-white rounded-b-xl'>
+                            <h2 class = 'text-2xl hover:text-4xl'>{{ chart.decade }}</h2>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+{% endblock %}
