@@ -1,4 +1,4 @@
-{% extends 'charts/base.html' %}
+{% extends 'core/base.html' %}
 
 {% block title %}{{ chart.decade }}{% endblock %}
 
@@ -8,7 +8,7 @@
 <div class='text-white'>
     {% for song in songs %}
     <div class='grid grid-rows-5 gap-1 px-2 py-2'>
-        <div class='text-center bg-gray-400 row-span-1 rounded-lg bg-origin-padding'>
+        <div class='text-center bg-gray-300 row-span-1 rounded-lg bg-origin-padding'>
             <h2 class='text-3xl text-blue-600 hover:text-blue-700 hover:text-4xl'><strong>#{{ song.rank }}. </strong></h2>
             <p class='text-xl'>"{{ song.title }}" by {{ song.artist }}</p>
         </div>

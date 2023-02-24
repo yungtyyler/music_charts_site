@@ -1,11 +1,24 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from .models import Chart, Song
 
-def index(request):
+def songs(request):
+    query = request.GET.get('query', '')
+    chart_id = request.GET.get('chart', 0)
+    songs = Song.objects.all().order_by('title').values()
     charts = Chart.objects.all()
 
-    return render(request, 'charts/index.html', {
+    if chart_id:
+        songs = songs.filter(decade_id=chart_id)
+
+    if query:
+        songs = songs.filter(Q(title__icontains=query) | Q(artist__icontains=query))
+
+    return render(request, 'charts/songs.html', {
+        'songs': songs,
+        'query': query,
         'charts': charts,
+        'chart_id': int(chart_id),
     })
 
 def detail(request, pk):

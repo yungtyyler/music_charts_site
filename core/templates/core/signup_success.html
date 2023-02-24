@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block content %}
+    <div class='w-1/2 text-lg'>
+        <h1>You Have successfully signed up, <strong>Welcome!</strong></h1>
+        <h2>You may click <a href='{% url 'core:index' %}' class='txt-xl text-teal-500'>HERE</a> to return to the home page.</h2>
+    </div>
+{% endblock %}

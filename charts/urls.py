@@ -4,6 +4,6 @@ from . import views
 app_name = 'chart'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.songs, name='songs'),
     path('<int:pk>/', views.detail, name='detail'),
 ]
