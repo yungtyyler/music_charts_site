@@ -8,23 +8,17 @@
             <form method='get' action='{% url 'chart:songs' %}' class='col-span-1'>
                 <input name='query' class='w-3/4 py-4 px-6 border rounded-xl' type='text' value='{{ query }}' placeholder='Find a Song!'>
                 <button class='mt-2 py-4 px-8 text-lg bg-purple-500 text-white rounded-xl'>Search</button>
+                <a href='{% url 'chart:songs' %}' class='mt-2 py-4 px-8 inline-block bg-red-500 text-lg rounded-xl text-white'>Clear</a>
             </form>
-            <ul>
-                <li>
-                    <a href='{% url 'chart:songs' %}' class='mt-2 py-4 px-8 inline-block bg-red-500 text-lg rounded-xl text-white'>Clear</a>
-                </li>
-            </ul>
 
-            <hr class='my-6'>
-            <p class='font-semibold'>Charts:</p>
             <div class='grid-col-4 gap-2'>
-                <ul>
+                <nav class='py-6 px-6 flex justify-between items-center border-b border-gray-300'>
                     {% for chart in charts %}
-                        <li class='row-span-1 py-2 px-2 rounded-xl{% if chart.id == chart_id %} bg-gray-300{% endif %}'>
+                        <div class='row-span-1 py-2 px-2 rounded-xl{% if chart.id == chart_id %} bg-gray-300{% endif %}'>
                             <a href='{% url 'chart:songs' %}?query={{ query }}&chart={{ chart.id }}'>{{ chart.decade }}</a>
-                        </li>
+                        </div>
                     {% endfor %}
-                </ul>
+                    </nav>
             </div>
         </div>
 
@@ -34,7 +28,7 @@
             <div>
                     <div class='px-3 py-1 bg-purple-500 rounded-b-xl my-2'>
                         <div class = 'p-6 py-2 bg-purple-300 rounded-b-lg'>
-                            <h2 class = 'font-serif text-xl hover:text-2xl hover:text-white'>"{{ song.title }}" by {{ song.artist }}</h2>
+                            <a href='{% url 'chart:detail' song.decade_id %}' class = 'font-serif text-xl hover:text-2xl hover:text-white'>"{{ song.title }}" by {{ song.artist }}</h2>
                         </div>
                     </div>
                 </a>

@@ -3,17 +3,17 @@
 {% block title %}Charts{% endblock %}
 
 {% block content %}
-    <h1 class='text-center text-6xl py-10'>Choose a Decade!</h1>
-        <div class='grid grid-cols-3 gap-3 bg-gray-200'>
+    <h1 class='text-center text-6xl py-10 italic'>Choose a Decade!</h1>
+        <div class='grid grid-cols-3 gap-4 items-center'>
         {% for chart in charts %}
             <div>
                 <a href = '{% url 'chart:detail' chart.id %}'>
                     <div class='px-3 py-3'>
                         <div>
-                            <img src='{{ chart.image.url }}' class='rounded-t-xl'>
+                            <img src='{{ chart.image.url }}' class='rounded-t-xl border-2 border-black'>
                         </div>
-                        <div class = 'p-6 bg-white rounded-b-xl'>
-                            <h2 class = 'text-2xl hover:text-4xl'>{{ chart.decade }}</h2>
+                        <div class = 'p-6 bg-white rounded-b-xl border-r-2 border-l-2 border-b-2 border-black'>
+                            <h2 class = 'text-2xl text-center hover:text-4xl'>{{ chart.decade }}</h2>
                         </div>
                     </div>
                 </a>

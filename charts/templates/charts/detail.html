@@ -3,21 +3,27 @@
 {% block title %}{{ chart.decade }}{% endblock %}
 
 {% block content %}
-<h1 class='text-4xl px-2 py-3 text-gray-600'>Top 10 Songs of the Decade</h1>
-<p class='text-3xl px-2 py-3 text-gray-400'>According to Billboards</p>
-<div class='text-white'>
-    {% for song in songs %}
-    <div class='grid grid-rows-5 gap-1 px-2 py-2'>
-        <div class='text-center bg-gray-300 row-span-1 rounded-lg bg-origin-padding'>
-            <h2 class='text-3xl text-blue-600 hover:text-blue-700 hover:text-4xl'><strong>#{{ song.rank }}. </strong></h2>
-            <p class='text-xl'>"{{ song.title }}" by {{ song.artist }}</p>
+<div class='bg-purple-50 rounded-xl border-2 border-gray-500 px-10'>
+    <h1 class='text-8xl px-2 py-3 text-center mb-6'>{{ chart.decade }}</h1>
+        <div class='flex justify-between'>
+            <p class='inline-block text-4xl px-2 py-3 text-gray-800 text-left'>Top 10 Songs of the Decade</p>
+            <a href='{% url 'discussions:new' chart.id %}' class='inline-block mb-6 text-center px-6 py-3 text-lg font-semibold bg-purple-500 text-white rounded-xl hover:bg-purple-700'>New Discussion Topic</a>
         </div>
-        <div class='flex flex-row justify-center items-center row-span-4 px-3 py-3'>
-            <iframe width='560' height='315' src='{{ song.video_link }}' title='YouTube video player' frameborder='0'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                allowfullscreen></iframe>
+        <p class='text-2xl px-2 pb-6 text-gray-500'>According to Billboards</p>
+    <div class='text-white'>
+        {% for song in songs %}
+        <div class='grid grid-rows-5 gap-1 px-2 py-2'>
+            <div class='py-4 text-center bg-gray-400 row-span-1 rounded-full border-2 border-black'>
+                <h2 class='text-6xl text-purple-600'><strong>#{{ song.rank }}. </strong></h2>
+                <p class='text-2xl'>"{{ song.title }}" by {{ song.artist }}</p>
+            </div>
+            <div class='flex flex-row justify-center items-center row-span-4'>
+                <iframe width='560' height='315' src='{{ song.video_link }}' title='YouTube video player' frameborder='0'
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                    allowfullscreen></iframe>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
