@@ -11,15 +11,17 @@
         <nav class='py-6 px-6 flex justify-between items-center border-b border-gray-300'>
             <a href='/' class='text-4xl font-semibold'>BILLBOARDS Top Ten by Decade</a>
 
-            <div class='space-x-6'>
+            <div class='grid grid-cols-4 gap-4 items-center'>
                 <a href='{% url 'chart:songs' %}' class='text-xl font-semibold hover:text-gray-500'>Search Songs</a>
+                <a href='{% url 'core:logout' %}'
+                    class='px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700'>Logout</a>
                 {% if request.user.is_authenticated %}
                 <a href='{% url 'discussions:index' %}' class='px-6 py-3 text-lg font-semibold bg-green-500 text-white rounded-xl hover:bg-green-700'>Discussions</a>
                 <a href='{% url 'discussions:user_posts' %}' class='px-6 py-3 text-lg font-semibold bg-yellow-500 text-white rounded-xl hover:bg-yellow-700'>My Posts</a>
                 {% else %}
-                <a href='{% url 'core:signup' %}' class='px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700'>Sign up</a>
+                <a href='{% url 'core:signup' %}' class='px-6 py-3 text-lg font-semibold bg-pink-500 text-white rounded-xl hover:bg-pink-700'>Sign up</a>
                 <a href='{% url 'core:login' %}'
-                    class='px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700'>Login</a>
+                    class='px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700'>Login</a>    
                 {% endif %}
             </div>
         </nav>

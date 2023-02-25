@@ -14,7 +14,7 @@
                         <p class='px-4'>{{ topic.decade }}</p>
                     </div>
                     <div class='px-6'>
-                        <a href='{% url 'discussions:topic_posts' topic.id %}' class='mb-6'><strong>{{ topic.created_by }}</strong> | {{ topic.created_at }}</a>
+                        <a href='{% url 'discussions:topic_posts' topic.id %}' class='mb-6'><strong>{{ topic.created_by }}</strong> | Last Modified: {{ topic.updated_at }} | Created: {{ topic.created_at }}</a>
                         <p class='text-2xl'>{{ topic.name }}</p>
                     </div>
                 </div>

@@ -68,7 +68,7 @@ def user_posts(request):
     return render(request, 'discussions/user_posts.html', {
         'topics': topics,
         'charts': charts,
-        'posts': posts
+        'posts': posts,
     })
 
 @login_required

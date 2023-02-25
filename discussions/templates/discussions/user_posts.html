@@ -5,23 +5,35 @@
 {% block content %}
     <h1 class='mb-6 text-3xl'>My Discussion Posts:</h1>
 
-    <div class='space-x-6'>
-        {% for topic in topics %}
-            <a href='#'>
-                <div class='p-6 flex bg-purple-100 rounded-xl'>
-                    <div class='pr-6 border-r-2 border-gray-300'>
-                        <img src='{{ topic.decade.image.url }}' class='w-20 rounded-xl py-3'>
-                        <a href='{% url 'discussions:topic_posts' topic.id %}' class='px-4'>{{ topic.decade }}</a>
+    <div class='grid grid-cols-2 gap-4'>
+        <div class='col-span-1 bg-gray-200 p-3 rounded-xl'>
+        <header class='py-4 px-4 text-xl text-center text-green-800'>Topic Discussions I Started</header>
+            {% for topic in topics %}
+                    <div class='px-3 flex bg-purple-100 rounded-xl col-span-1 items-center border-black border-2'>
+                        <div class='pr-6 border-r-2 border-gray-300'>
+                            <img src='{{ topic.decade.image.url }}' class='w-20 rounded-xl py-3'>
+                            <a href='{% url 'discussions:topic_posts' topic.id %}' class='px-4'>{{ topic.decade }}</a>
+                        </div>
+                        
+                        <div class='px-6'>
+                            <a href='{% url 'discussions:topic_posts' topic.id %}' class='mb-6'><strong>{{ topic.created_by }}</strong> | {{ topic.created_at }}</a>
+                            <p class='text-2xl'>{{ topic.name }}</p>
+                        </div>
                     </div>
-                    <div class='px-6'>
-                        <a href='{% url 'discussions:topic_posts' topic.id %}' class='mb-6'><strong>{{ topic.created_by }}</strong> | {{ topic.created_at }}</a>
-                        <p class='text-2xl'>{{ topic.name }}</p>
-                    </div>
+            {% endfor %}
+        </div>
+
+        <div class='px-3 col-span-1 bg-gray-200 p-3 rounded-xl'>
+        <header class='py-4 px-4 text-xl text-center text-green-800'>Posts I've Made</header>
+            {% for post in posts %}
+                <div class='px-3 flex bg-teal-100 rounded-xl col-span-1 items-center border-black border-2'>
+                    {% for topic in topics %}
+                        <img src='{{ topic.decade.image.url }}' class='w-20 rounded-xl py-3 px-1'>
+                        <a href='{% url 'discussions:topic_posts' topic.id %}' class='mb-6 px-2'><strong>{{ post.created_by }}</strong> | {{ post.created_at }}</a>
+                    {% endfor %}
+                    <p class='text-xl mt-4 p-6'>{{ post.content }}</p>
                 </div>
-            </a>
-        {% endfor %}
-        {% for post in posts %}
-            <!-- finish this part! -->
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
