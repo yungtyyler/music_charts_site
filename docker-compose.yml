@@ -17,7 +17,7 @@ services:
       - pgdb
       - web
   web:
-    build: ./app
+    build: .
     image: 953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site:music_charts_aws_web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
