@@ -7,7 +7,7 @@ services:
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000
     volumes: 
-      - .:/usr/src/app
+      - ./app/:/usr/src/app/
     ports:
       - "8000:8000"
     environment:
@@ -21,7 +21,7 @@ services:
     image: 953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site:music_charts_aws_web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:usr/src/app
+      - ./app/:/usr/src/app/
     expose:
       - 8000
     environment:
