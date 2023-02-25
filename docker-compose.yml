@@ -3,6 +3,7 @@ version: "3.8"
 services:
   django:
     build: .
+    image: 953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site:music_charts_aws_django
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000
     volumes: 
@@ -14,6 +15,24 @@ services:
       - DJANGO_ALLOWS_HOSTS=localhost 127.0.0.1
     depends_on:
       - pgdb
+      - web
+  web:
+    build: ./app
+    image: 953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site:music_charts_aws_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:usr/src/app
+    expose:
+      - 8000
+    environment:
+      - DB_NAME=music-charts-site
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=music-charts-site.ckpehz0h9gsx.us-west-1.rds.amazonaws.com
+      - DB_PORT=5432
+      - DATABASE=postgres
+      - VIRTUAL_HOST=953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site
+      - VIRTUAL_PORT=8000
   pgdb:
     image: postgres
     container_name: pgdb
