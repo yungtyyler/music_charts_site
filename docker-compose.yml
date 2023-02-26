@@ -25,7 +25,7 @@ services:
     expose:
       - 8000
     environment:
-      - DB_NAME=music-charts-site
+      - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_HOST=music-charts-site.ckpehz0h9gsx.us-west-1.rds.amazonaws.com
