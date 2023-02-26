@@ -14,10 +14,12 @@
 
     
     {% for post in posts %}
-        <div class='my-4 px-6 py-6 flex bg-gray-100 rounded-xl'></div>
-            <p class='mb-6'><strong>{{ post.created_by }}</strong> | {{ post.created_at }}</p>
-            <p class='text-xl'>{{ post.content }}</p>
-        </div>
+    <div class='my-4 px-6 py-6 flex bg-gray-100 rounded-xl'></div>
+            <div class='my-4 px-6 py-6 flex bg-gray-100 rounded-xl'>
+                <p class='mb-6'><strong>{{ post.created_by }}</strong> | {{ post.created_at }}</p>
+                <p class='text-xl'>{{ post.content }}</p>
+            </div>
+    </div>
     {% endfor %}
     
     <div>
