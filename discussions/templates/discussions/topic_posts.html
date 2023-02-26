@@ -12,14 +12,16 @@
         </div>
     </div>
 
-    <div class='my-4 px-6 py-6 flex bg-gray-100 rounded-xl'>
-        {% for post in posts %}
+    
+    {% for post in posts %}
+        <div class='my-4 px-6 py-6 flex bg-gray-100 rounded-xl'></div>
             <div class='px-6'>
                 <p class='mb-6'><strong>{{ post.created_by }}</strong> | {{ post.created_at }}</p>
                 <p class='text-xl'>{{ post.content }}</p>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+    
     <div>
         <h2 class='mb-6 text-3xl'>Want to Add to this Discussion?</h2>
         <a href='{% url 'discussions:new_discussion_post' topic.id %}' class='mt-6 py-4 px-8 text-lg rounded-xl bg-teal-500 hover:bg-teal-700'>Click Here!</a>
