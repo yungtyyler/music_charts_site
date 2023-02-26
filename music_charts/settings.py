@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'web',
+        'HOST': 'music-charts-site.ckpehz0h9gsx.us-west-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
