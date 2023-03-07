@@ -2,11 +2,10 @@ version: "3.8"
 
 services:
   django:
-    build: . 
-    image: 953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site:music_charts_aws_django
+    build: .
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000
-    volumes: 
+    volumes:
       - .:/usr/src/app
     ports:
       - "8000:8000"
@@ -14,34 +13,16 @@ services:
       - DEBUG=1
       - DJANGO_ALLOWS_HOSTS=localhost 127.0.0.1
     depends_on:
-      # - pgdb
-      - web
-  web:
-    build: . 
-    image: 953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site:music_charts_aws_web
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/usr/src/app
-    expose:
-      - 8000
+      - pgdb
+  pgdb:
+    image: postgres
+    container_name: pgdb
     environment:
-      - DB_NAME=postgres
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
-      - DB_HOST=music-charts-site.ckpehz0h9gsx.us-west-1.rds.amazonaws.com
-      - DB_PORT=5432
-      - DATABASE=postgres
-      - VIRTUAL_HOST=953451844352.dkr.ecr.us-west-1.amazonaws.com/music_charts_site
-      - VIRTUAL_PORT=8000
-  # pgdb:
-  #   image: postgres
-  #   container_name: pgdb
-  #   environment:
-  #     - POSTGRES_DB=postgres
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=postgres
-  #   volumes:
-  #     - pgdata:/var/lib/postgresql/data/
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
 
 volumes:
   pgdata:

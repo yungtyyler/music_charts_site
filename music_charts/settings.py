@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-pe=y1)vkb@@*ok*2u3hik24d!yh!^(c5o8po0wfr#85==ltcz@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-219-70-33.us-west-1.compute.amazonaws.com', '0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'music-charts-site.ckpehz0h9gsx.us-west-1.rds.amazonaws.com',
+        'HOST': 'pgdb',
         'PORT': '5432',
     }
 }
